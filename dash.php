@@ -2,22 +2,27 @@
 require_once 'config.php';
 
 error_reporting(E_ALL);
-
 ini_set('display_errors', 1);
 
 session_start();
-if(!isset($_SESSION['username'])) {
+if(!isset($_SESSION['email'])) {
     header("Location: index.php");
     exit();
 }
 
-// Contagem de usuarios
+$email = $_SESSION['email'];
+$user_query = "SELECT nome FROM usuarios WHERE email = '$email'";
+$user_result = $conn->query($user_query);
+$user_row = $user_result->fetch_assoc();
+$logged_in_user = $user_row['nome'];
+
+// Contagem de usuários
 $count_users_query = "SELECT COUNT(*) as total FROM usuarios";
 $count_users_result = $conn->query($count_users_query);
 $count_users_row = $count_users_result->fetch_assoc();
 $total_users = $count_users_row['total'];
 
-// Lista  users
+// Lista de usuários
 $users_query = "SELECT nome FROM usuarios";
 $users_result = $conn->query($users_query);
 $users = array();
@@ -25,7 +30,6 @@ while($row = $users_result->fetch_assoc()) {
     $users[] = $row['nome'];
 }
 
-//tempo de login
 if(isset($_SESSION['login_time'])) {
     $login_time = $_SESSION['login_time'];
     $current_time = time();
@@ -111,7 +115,7 @@ if(isset($_SESSION['login_time'])) {
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Usuário Conectado</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $_SESSION['username']; ?></div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $logged_in_user; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -121,7 +125,6 @@ if(isset($_SESSION['login_time'])) {
                             </div>
                         </div>
 
-                        <!-- Card do tempo de login -->
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
@@ -175,7 +178,7 @@ if(isset($_SESSION['login_time'])) {
         var tempoLoginElement = document.getElementById("tempo-login");
         var tempoLoginInicial = <?php echo isset($_SESSION['login_time']) ? $_SESSION['login_time'] : 0; ?>;
         
-        var tempoAtual = Math.floor(Date.now() / 1000); // Tempo atual em segundos
+        var tempoAtual = Math.floor(Date.now() / 1000); 
         
         var tempoDecorrido = tempoAtual - tempoLoginInicial;
         var horas = Math.floor(tempoDecorrido / 3600);

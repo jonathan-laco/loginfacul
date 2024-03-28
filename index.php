@@ -17,7 +17,7 @@
             <h2> SISTEMA</h2>
             <form method="post" action="login.php">
                 <div class="inputBx">
-                    <input type="text" name="username" placeholder="Usuário" required />
+                    <input type="email" name="email" placeholder="E-mail" required />
                 </div>
                 <div class="inputBx">
                     <input type="password" name="password" placeholder="Senha" required />

@@ -2,12 +2,13 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 require_once 'config.php';
-$usuario = mysqli_real_escape_string($conn, $_POST['username']);
+
+$email = mysqli_real_escape_string($conn, $_POST['email']);
 $password = mysqli_real_escape_string($conn, $_POST['password']);
 
-$sql = "SELECT * FROM usuarios WHERE nome = ?";
+$sql = "SELECT * FROM usuarios WHERE email = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $usuario);
+$stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
@@ -18,7 +19,7 @@ if ($result->num_rows > 0) {
 
         $_SESSION['login_time'] = time();
 
-        $_SESSION['username'] = $usuario;
+        $_SESSION['email'] = $email; 
 
         header("Location: dash.php");
         exit();
@@ -27,10 +28,9 @@ if ($result->num_rows > 0) {
         exit();
     }
 } else {
-    echo "<script>alert('Usuário não encontrado. Por favor, registre-se.'); window.location.href='register.php';</script>";
+    echo "<script>alert('E-mail não encontrado. Por favor, registre-se.'); window.location.href='register.php';</script>";
     exit();
 }
 $stmt->close();
 $conn->close();
 ?>
-
