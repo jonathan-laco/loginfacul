@@ -2,7 +2,8 @@
 
 Este é um sistema de login simples desenvolvido em PHP para a cadeira de Backend da faculdade, com algumas funcionalidades básicas, como registro de usuário, login, e um dashboard para exibir informações sobre os usuários.
 
-![2024-03-26_15-04](https://github.com/jonathan-laco/loginfacul/assets/39104938/bc9008a5-adc5-4a6d-b8da-9586e6f18146)
+[Gravação de tela de 2024-03-28 11-01-27.webm](https://github.com/jonathan-laco/loginfacul/assets/39104938/b9ab2e9a-0650-4923-8d82-9ed0a27a970e)
+
 ## Funcionalidades
 
 - Registro de usuário
