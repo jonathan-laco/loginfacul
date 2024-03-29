@@ -68,9 +68,7 @@
             return pontuacao;
         }
 
-        function exibirAlerta() {
-            alert("Usuário cadastrado com sucesso!");
-        }
+
     </script>
 </head>
 <body>
