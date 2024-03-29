@@ -39,6 +39,10 @@ Este é um sistema de login simples desenvolvido em PHP para a cadeira de Backen
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue para relatar bugs ou propor novas funcionalidades. Se desejar contribuir com código, por favor abra um pull request.
 
+
+## Em breve
+Observação: A responsividade deste projeto está em andamento.
+
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
