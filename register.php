@@ -68,7 +68,6 @@
             return pontuacao;
         }
 
-
     </script>
 </head>
 <body>

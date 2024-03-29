@@ -14,11 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO usuarios (nome, email, usuario, senha) VALUES ('$nome', '$email', '$usuario', '$senha_hash')";
 
     if ($conn->query($sql) === TRUE) {
-        header("Location: index.php");
+        echo "<script>alert('Usuário cadastrado com sucesso!'); window.location.href = 'index.php';</script>"; // Alerta de sucesso e redirecionamento por JavaScript
         exit();
     } else {
         echo "Erro ao registrar usuário: " . $conn->error;
     }
-    $conn->close();
 }
 ?>
